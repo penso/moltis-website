@@ -167,11 +167,9 @@
                 <div class="flex flex-wrap gap-1 px-4 pt-3 pb-2 border-b border-gray-200 dark:border-gray-800" id="install-tabs">
                     <button data-tab="curl" class="px-3 py-1 text-xs font-medium rounded-md transition-colors">Install</button>
                     <button data-tab="brew" class="px-3 py-1 text-xs font-medium rounded-md transition-colors">Homebrew</button>
-                    <button data-tab="cargo" class="px-3 py-1 text-xs font-medium rounded-md transition-colors">Cargo</button>
-                    <button data-tab="apt" class="px-3 py-1 text-xs font-medium rounded-md transition-colors">apt</button>
-                    <button data-tab="dnf" class="px-3 py-1 text-xs font-medium rounded-md transition-colors">dnf</button>
-                    <button data-tab="arch" class="px-3 py-1 text-xs font-medium rounded-md transition-colors">Arch</button>
-                    <button data-tab="snap" class="px-3 py-1 text-xs font-medium rounded-md transition-colors">Snap</button>
+                    <button data-tab="binstall" class="px-3 py-1 text-xs font-medium rounded-md transition-colors">Cargo</button>
+                    <button data-tab="docker" class="px-3 py-1 text-xs font-medium rounded-md transition-colors">Docker</button>
+                    <button data-tab="source" class="px-3 py-1 text-xs font-medium rounded-md transition-colors">Source</button>
                 </div>
                 <div class="p-4 font-mono text-sm leading-relaxed">
                     <div id="tab-curl" class="install-content">
@@ -180,23 +178,17 @@
                     <div id="tab-brew" class="install-content hidden">
                         <p class="text-gray-500 dark:text-gray-500">$ <span class="text-gray-700 dark:text-gray-300">brew install moltis-org/tap/moltis</span></p>
                     </div>
-                    <div id="tab-cargo" class="install-content hidden">
-                        <p class="text-gray-500 dark:text-gray-500">$ <span class="text-gray-700 dark:text-gray-300">cargo install moltis</span></p>
+                    <div id="tab-binstall" class="install-content hidden">
+                        <p class="text-gray-500 dark:text-gray-500 mb-1"># Pre-built binary via cargo-binstall (no compilation)</p>
+                        <p class="text-gray-500 dark:text-gray-500">$ <span class="text-gray-700 dark:text-gray-300">cargo binstall moltis</span></p>
                     </div>
-                    <div id="tab-apt" class="install-content hidden">
-                        <p class="text-gray-500 dark:text-gray-500 mb-1"># Download the .deb from GitHub releases</p>
-                        <p class="text-gray-500 dark:text-gray-500">$ <span class="text-gray-700 dark:text-gray-300">sudo dpkg -i moltis_*_amd64.deb</span></p>
+                    <div id="tab-docker" class="install-content hidden">
+                        <p class="text-gray-500 dark:text-gray-500 mb-1"># Multi-arch: amd64/arm64</p>
+                        <p class="text-gray-500 dark:text-gray-500">$ <span class="text-gray-700 dark:text-gray-300">docker pull ghcr.io/moltis-org/moltis:latest</span></p>
                     </div>
-                    <div id="tab-dnf" class="install-content hidden">
-                        <p class="text-gray-500 dark:text-gray-500 mb-1"># Download the .rpm from GitHub releases</p>
-                        <p class="text-gray-500 dark:text-gray-500">$ <span class="text-gray-700 dark:text-gray-300">sudo dnf install moltis-*.x86_64.rpm</span></p>
-                    </div>
-                    <div id="tab-arch" class="install-content hidden">
-                        <p class="text-gray-500 dark:text-gray-500 mb-1"># Download the .pkg.tar.zst from GitHub releases</p>
-                        <p class="text-gray-500 dark:text-gray-500">$ <span class="text-gray-700 dark:text-gray-300">sudo pacman -U moltis-*-x86_64.pkg.tar.zst</span></p>
-                    </div>
-                    <div id="tab-snap" class="install-content hidden">
-                        <p class="text-gray-500 dark:text-gray-500">$ <span class="text-gray-700 dark:text-gray-300">sudo snap install moltis</span></p>
+                    <div id="tab-source" class="install-content hidden">
+                        <p class="text-gray-500 dark:text-gray-500 mb-1"># Build from source</p>
+                        <p class="text-gray-500 dark:text-gray-500">$ <span class="text-gray-700 dark:text-gray-300">cargo install moltis --git https://github.com/moltis-org/moltis</span></p>
                     </div>
                 </div>
             </div>
@@ -316,7 +308,7 @@
     <script>
         // Installation tabs
         const tabsEl = document.getElementById('install-tabs');
-        const tabs = ['curl', 'brew', 'cargo', 'apt', 'dnf', 'arch', 'snap'];
+        const tabs = ['curl', 'brew', 'binstall', 'docker', 'source'];
         let activeTab = 'curl';
 
         function updateTabs() {
