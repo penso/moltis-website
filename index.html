@@ -305,45 +305,77 @@
         <!-- Extended features checklist -->
         <div class="max-w-3xl mx-auto mb-8 text-left">
             <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-4 text-center">And much more...</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Security -->
                 <div>
                     <h3 class="text-sm font-semibold text-orange-500 dark:text-orange-400 mb-2 uppercase tracking-wide">Security</h3>
                     <ul class="space-y-1 text-xs text-gray-600 dark:text-gray-400">
-                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> TLS everywhere by default</li>
-                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> Secrets encrypted at rest</li>
-                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> Rate limiting per user</li>
-                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> Audit logging</li>
+                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> Passkeys (WebAuthn)</li>
+                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> Scoped API keys</li>
+                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> Secrets zeroed on drop</li>
+                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> Human-in-the-loop approval</li>
+                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> Origin validation (CSWSH)</li>
+                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> No unsafe code</li>
                     </ul>
                 </div>
-                <!-- Performance -->
+                <!-- LLM Providers -->
                 <div>
-                    <h3 class="text-sm font-semibold text-orange-500 dark:text-orange-400 mb-2 uppercase tracking-wide">Performance</h3>
+                    <h3 class="text-sm font-semibold text-orange-500 dark:text-orange-400 mb-2 uppercase tracking-wide">LLM Providers</h3>
                     <ul class="space-y-1 text-xs text-gray-600 dark:text-gray-400">
-                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> Async I/O with Tokio</li>
-                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> Connection pooling</li>
-                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> Request batching</li>
-                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> Response caching</li>
+                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> 30+ cloud providers</li>
+                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> OpenRouter (100+ models)</li>
+                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> Ollama local models</li>
+                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> GGUF via llama-cpp</li>
+                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> Provider fallback chains</li>
+                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> Per-provider metrics</li>
                     </ul>
                 </div>
-                <!-- Integrations -->
+                <!-- Memory -->
                 <div>
-                    <h3 class="text-sm font-semibold text-orange-500 dark:text-orange-400 mb-2 uppercase tracking-wide">Integrations</h3>
+                    <h3 class="text-sm font-semibold text-orange-500 dark:text-orange-400 mb-2 uppercase tracking-wide">Memory</h3>
                     <ul class="space-y-1 text-xs text-gray-600 dark:text-gray-400">
-                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> OpenAI-compatible API</li>
-                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> Webhooks support</li>
-                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> Prometheus metrics</li>
-                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> S3-compatible storage</li>
+                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> Hybrid search (vector + FTS)</li>
+                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> Local embeddings (GGUF)</li>
+                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> OpenAI batch API (50% off)</li>
+                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> Embedding cache</li>
+                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> File watching / live sync</li>
+                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> Session export</li>
                     </ul>
                 </div>
-                <!-- Developer Experience -->
+                <!-- Extensibility -->
                 <div>
-                    <h3 class="text-sm font-semibold text-orange-500 dark:text-orange-400 mb-2 uppercase tracking-wide">Developer Experience</h3>
+                    <h3 class="text-sm font-semibold text-orange-500 dark:text-orange-400 mb-2 uppercase tracking-wide">Extensibility</h3>
                     <ul class="space-y-1 text-xs text-gray-600 dark:text-gray-400">
-                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> Hot config reload</li>
-                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> Structured logging</li>
+                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> MCP server support</li>
+                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> Hook system (lifecycle)</li>
+                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> Cron job scheduling</li>
                         <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> TOML configuration</li>
-                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> CLI with shell completions</li>
+                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> Environment overrides</li>
+                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> Dynamic port allocation</li>
+                    </ul>
+                </div>
+                <!-- Channels -->
+                <div>
+                    <h3 class="text-sm font-semibold text-orange-500 dark:text-orange-400 mb-2 uppercase tracking-wide">Channels</h3>
+                    <ul class="space-y-1 text-xs text-gray-600 dark:text-gray-400">
+                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> Web UI</li>
+                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> Telegram bot</li>
+                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> JSON-RPC API</li>
+                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> Mobile PWA</li>
+                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> Push notifications</li>
+                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> Multi-device sync</li>
+                    </ul>
+                </div>
+                <!-- Observability -->
+                <div>
+                    <h3 class="text-sm font-semibold text-orange-500 dark:text-orange-400 mb-2 uppercase tracking-wide">Observability</h3>
+                    <ul class="space-y-1 text-xs text-gray-600 dark:text-gray-400">
+                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> Prometheus metrics</li>
+                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> OpenTelemetry tracing</li>
+                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> Structured logging</li>
+                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> Per-provider charts</li>
+                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> SQLite persistence</li>
+                        <li class="flex items-center gap-2"><span class="text-orange-500">✓</span> Real-time WebSocket</li>
                     </ul>
                 </div>
             </div>
