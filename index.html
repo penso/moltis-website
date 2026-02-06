@@ -61,14 +61,16 @@
         .animate-pulse-slow { animation: pulse-slow 4s ease-in-out infinite; }
         .animation-delay-2s { animation-delay: 2s; }
         .font-outfit { font-family: 'Outfit', sans-serif; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
     </style>
 </head>
-<body class="bg-white dark:bg-gray-950 text-gray-900 dark:text-white min-h-screen flex items-center justify-center relative transition-colors duration-300 pt-2 pb-8 overflow-x-hidden">
-    <div class="absolute inset-0">
-        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-300/20 dark:bg-orange-600/15 rounded-full blur-3xl animate-pulse-slow"></div>
-        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-red-300/20 dark:bg-red-600/15 rounded-full blur-3xl animate-pulse-slow animation-delay-2s"></div>
+<body class="bg-white dark:bg-gray-950 text-gray-900 dark:text-white min-h-screen flex items-center justify-center relative transition-colors duration-300 pt-2 pb-8 overflow-x-hidden w-full">
+    <div class="absolute inset-0 overflow-hidden">
+        <div class="absolute top-1/4 left-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-orange-300/20 dark:bg-orange-600/15 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-red-300/20 dark:bg-red-600/15 rounded-full blur-3xl animate-pulse-slow animation-delay-2s"></div>
     </div>
-    <div class="relative z-10 text-center px-6 w-full max-w-2xl">
+    <div class="relative z-10 text-center px-4 sm:px-6 w-full max-w-2xl">
         <div class="flex justify-end mb-1">
             <div class="flex items-center gap-0.5 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md p-0.5" id="theme-switch">
                 <button data-theme="light" title="Light" class="p-1 rounded transition-colors">
@@ -154,10 +156,10 @@
                 <path d="M68 80 Q80 90 92 80" stroke="#9a3412" stroke-width="2.5" stroke-linecap="round" fill="none"/>
             </svg>
         </div>
-        <h1 class="text-6xl font-bold tracking-tight mb-2 bg-gradient-to-r from-orange-500 to-red-500 dark:from-orange-400 dark:to-red-400 bg-clip-text text-transparent font-outfit">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-2 bg-gradient-to-r from-orange-500 to-red-500 dark:from-orange-400 dark:to-red-400 bg-clip-text text-transparent font-outfit">
             Moltis
         </h1>
-        <p class="text-lg text-gray-600 dark:text-gray-400 mb-4">A personal AI gateway, built in Rust.</p>
+        <p class="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-4">A personal AI gateway, built in Rust.</p>
         <!-- Installation tabs -->
         <div class="max-w-3xl mx-auto text-left my-8">
             <div class="bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden shadow-lg">
@@ -167,15 +169,15 @@
                     <span class="w-3 h-3 rounded-full bg-green-400"></span>
                     <span class="ml-2 text-xs font-mono text-gray-400 dark:text-gray-500">~ quickstart</span>
                 </div>
-                <div class="flex flex-wrap gap-1 px-4 pt-3 pb-2 border-b border-gray-200 dark:border-gray-800" id="install-tabs">
-                    <button data-tab="curl" class="px-3 py-1 text-xs font-medium rounded-md transition-colors">Install</button>
-                    <button data-tab="brew" class="px-3 py-1 text-xs font-medium rounded-md transition-colors">Homebrew</button>
-                    <button data-tab="binstall" class="px-3 py-1 text-xs font-medium rounded-md transition-colors">Cargo</button>
-                    <button data-tab="docker" class="px-3 py-1 text-xs font-medium rounded-md transition-colors">Docker</button>
-                    <button data-tab="source" class="px-3 py-1 text-xs font-medium rounded-md transition-colors">Source</button>
-                    <button data-tab="others" class="px-3 py-1 text-xs font-medium rounded-md transition-colors">Others</button>
+                <div class="flex gap-1 px-4 pt-3 pb-2 border-b border-gray-200 dark:border-gray-800 overflow-x-auto hide-scrollbar" id="install-tabs">
+                    <button data-tab="curl" class="shrink-0 px-3 py-1 text-xs font-medium rounded-md transition-colors">Install</button>
+                    <button data-tab="brew" class="shrink-0 px-3 py-1 text-xs font-medium rounded-md transition-colors">Homebrew</button>
+                    <button data-tab="binstall" class="shrink-0 px-3 py-1 text-xs font-medium rounded-md transition-colors">Cargo</button>
+                    <button data-tab="docker" class="shrink-0 px-3 py-1 text-xs font-medium rounded-md transition-colors">Docker</button>
+                    <button data-tab="source" class="shrink-0 px-3 py-1 text-xs font-medium rounded-md transition-colors">Source</button>
+                    <button data-tab="others" class="shrink-0 px-3 py-1 text-xs font-medium rounded-md transition-colors">Others</button>
                 </div>
-                <div class="p-4 font-mono text-sm leading-relaxed">
+                <div class="p-4 font-mono text-xs sm:text-sm leading-relaxed overflow-x-auto">
                     <div id="tab-curl" class="install-content">
                         <p class="text-gray-500 dark:text-gray-500">$ <span class="text-gray-700 dark:text-gray-300">curl -fsSL https://www.moltis.org/install.sh | sh</span></p>
                     </div>
@@ -215,97 +217,121 @@
             View on GitHub
         </a>
         <!-- Feature highlights -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto mb-8 text-left">
-            <div class="p-4 rounded-lg bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800">
-                <div class="text-orange-500 dark:text-orange-400 mb-2">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 max-w-3xl mx-auto mb-8 text-left">
+            <div class="p-3 sm:p-4 rounded-lg bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800">
+                <div class="flex items-center gap-2 mb-1.5 sm:mb-2">
+                    <span class="text-orange-500 dark:text-orange-400 shrink-0">
+                        <svg width="16" height="16" class="sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                    </span>
+                    <p class="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-200">Single Binary</p>
                 </div>
-                <p class="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1">Single Binary</p>
-                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">~42MB, zero dependencies. No Node.js, no npm, no runtime to babysit — just download and run.</p>
+                <p class="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400 leading-relaxed">~42MB, zero dependencies. Just download and run.</p>
             </div>
-            <div class="p-4 rounded-lg bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800">
-                <div class="text-orange-500 dark:text-orange-400 mb-2">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <div class="p-3 sm:p-4 rounded-lg bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800">
+                <div class="flex items-center gap-2 mb-1.5 sm:mb-2">
+                    <span class="text-orange-500 dark:text-orange-400 shrink-0">
+                        <svg width="16" height="16" class="sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </span>
+                    <p class="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-200">Memory Safe</p>
                 </div>
-                <p class="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1">Memory Safe</p>
-                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Secrets are zeroed on drop, not "eventually collected." No unsafe code anywhere in the codebase.</p>
+                <p class="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Secrets zeroed on drop. No unsafe code in the codebase.</p>
             </div>
-            <div class="p-4 rounded-lg bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800">
-                <div class="text-orange-500 dark:text-orange-400 mb-2">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <div class="p-3 sm:p-4 rounded-lg bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800">
+                <div class="flex items-center gap-2 mb-1.5 sm:mb-2">
+                    <span class="text-orange-500 dark:text-orange-400 shrink-0">
+                        <svg width="16" height="16" class="sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    </span>
+                    <p class="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-200">Authentication</p>
                 </div>
-                <p class="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1">Authentication</p>
-                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">HTTPS by default. Password, token, and passkeys access — secure from the first request.</p>
+                <p class="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400 leading-relaxed">HTTPS by default. Password, token, and passkeys access.</p>
             </div>
-            <div class="p-4 rounded-lg bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800">
-                <div class="text-orange-500 dark:text-orange-400 mb-2">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            <div class="p-3 sm:p-4 rounded-lg bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800">
+                <div class="flex items-center gap-2 mb-1.5 sm:mb-2">
+                    <span class="text-orange-500 dark:text-orange-400 shrink-0">
+                        <svg width="16" height="16" class="sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    </span>
+                    <p class="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-200">Compile-time Safe</p>
                 </div>
-                <p class="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1">Compile-time Safe</p>
-                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Provider misconfigurations are caught by the compiler, not discovered at 2 AM in production.</p>
+                <p class="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Misconfigurations caught by the compiler, not in production.</p>
             </div>
-            <div class="p-4 rounded-lg bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800">
-                <div class="text-orange-500 dark:text-orange-400 mb-2">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <div class="p-3 sm:p-4 rounded-lg bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800">
+                <div class="flex items-center gap-2 mb-1.5 sm:mb-2">
+                    <span class="text-orange-500 dark:text-orange-400 shrink-0">
+                        <svg width="16" height="16" class="sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    </span>
+                    <p class="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-200">SSRF Protected</p>
                 </div>
-                <p class="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1">SSRF Protected</p>
-                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Web fetch blocks loopback, private, and link-local IPs. The LLM can't reach your internal services.</p>
+                <p class="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Blocks loopback, private, and link-local IPs from LLM fetch.</p>
             </div>
-            <div class="p-4 rounded-lg bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800">
-                <div class="text-orange-500 dark:text-orange-400 mb-2">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            <div class="p-3 sm:p-4 rounded-lg bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800">
+                <div class="flex items-center gap-2 mb-1.5 sm:mb-2">
+                    <span class="text-orange-500 dark:text-orange-400 shrink-0">
+                        <svg width="16" height="16" class="sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    </span>
+                    <p class="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-200">Streaming-first</p>
                 </div>
-                <p class="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1">Streaming-first</p>
-                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Responses appear the moment the first token arrives. Lock-free circuit breakers, no GC latency spikes.</p>
+                <p class="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400 leading-relaxed">First token appears instantly. Lock-free, no GC spikes.</p>
             </div>
-            <div class="p-4 rounded-lg bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800">
-                <div class="text-orange-500 dark:text-orange-400 mb-2">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            <div class="p-3 sm:p-4 rounded-lg bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800">
+                <div class="flex items-center gap-2 mb-1.5 sm:mb-2">
+                    <span class="text-orange-500 dark:text-orange-400 shrink-0">
+                        <svg width="16" height="16" class="sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    </span>
+                    <p class="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-200">Skills & MCP</p>
                 </div>
-                <p class="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1">Skills & MCP</p>
-                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Extend with plugins, skills, and MCP tool servers. Stdio or HTTP/SSE transports, auto-restart on crash.</p>
+                <p class="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Plugins, MCP tool servers. Stdio or HTTP/SSE, auto-restart.</p>
             </div>
-            <div class="p-4 rounded-lg bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800">
-                <div class="text-orange-500 dark:text-orange-400 mb-2">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/><line x1="12" y1="11" x2="12" y2="17"/><line x1="9" y1="14" x2="15" y2="14"/></svg>
+            <div class="p-3 sm:p-4 rounded-lg bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800">
+                <div class="flex items-center gap-2 mb-1.5 sm:mb-2">
+                    <span class="text-orange-500 dark:text-orange-400 shrink-0">
+                        <svg width="16" height="16" class="sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/><line x1="12" y1="11" x2="12" y2="17"/><line x1="9" y1="14" x2="15" y2="14"/></svg>
+                    </span>
+                    <p class="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-200">FS or Sandbox</p>
                 </div>
-                <p class="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1">FS or Sandbox</p>
-                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Full filesystem access for trusted work, or per-session Docker/Apple Container isolation. Your call.</p>
+                <p class="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Full filesystem or per-session Docker/Apple Container isolation.</p>
             </div>
-            <div class="p-4 rounded-lg bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800">
-                <div class="text-orange-500 dark:text-orange-400 mb-2">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <div class="p-3 sm:p-4 rounded-lg bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800">
+                <div class="flex items-center gap-2 mb-1.5 sm:mb-2">
+                    <span class="text-orange-500 dark:text-orange-400 shrink-0">
+                        <svg width="16" height="16" class="sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    </span>
+                    <p class="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-200">Long-term Memory</p>
                 </div>
-                <p class="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1">Long-term Memory</p>
-                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Embeddings-powered knowledge base with hybrid vector + full-text search. Your agent remembers context.</p>
+                <p class="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Hybrid vector + full-text search. Your agent remembers context.</p>
             </div>
-            <div class="p-4 rounded-lg bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800">
-                <div class="text-orange-500 dark:text-orange-400 mb-2">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <div class="p-3 sm:p-4 rounded-lg bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800">
+                <div class="flex items-center gap-2 mb-1.5 sm:mb-2">
+                    <span class="text-orange-500 dark:text-orange-400 shrink-0">
+                        <svg width="16" height="16" class="sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                    </span>
+                    <p class="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-200">Self-Extension</p>
                 </div>
-                <p class="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1">Self-Extension</p>
-                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Pi-inspired agent that creates its own skills at runtime. Session branching, state persistence, hot-reload.</p>
+                <p class="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Creates its own skills at runtime. Session branching, hot-reload.</p>
             </div>
-            <div class="p-4 rounded-lg bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800">
-                <div class="text-orange-500 dark:text-orange-400 mb-2">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            <div class="p-3 sm:p-4 rounded-lg bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800">
+                <div class="flex items-center gap-2 mb-1.5 sm:mb-2">
+                    <span class="text-orange-500 dark:text-orange-400 shrink-0">
+                        <svg width="16" height="16" class="sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                    </span>
+                    <p class="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-200">Multi-Channel</p>
                 </div>
-                <p class="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1">Multi-Channel</p>
-                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Chat from the web UI, Telegram, or API. One agent, multiple frontends — responses sync everywhere.</p>
+                <p class="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Web UI, Telegram, or API. One agent, multiple frontends.</p>
             </div>
-            <div class="p-4 rounded-lg bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800">
-                <div class="text-orange-500 dark:text-orange-400 mb-2">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+            <div class="p-3 sm:p-4 rounded-lg bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800">
+                <div class="flex items-center gap-2 mb-1.5 sm:mb-2">
+                    <span class="text-orange-500 dark:text-orange-400 shrink-0">
+                        <svg width="16" height="16" class="sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+                    </span>
+                    <p class="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-200">Trusted Network</p>
                 </div>
-                <p class="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1">Trusted Network</p>
-                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Domain-filtering proxy for sandbox containers. Allowlist sites or approve requests interactively.</p>
+                <p class="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Domain-filtering proxy. Allowlist or approve requests interactively.</p>
             </div>
         </div>
 
         <!-- Extended features checklist -->
         <div class="max-w-3xl mx-auto mb-8 text-left">
             <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-4 text-center">And much more...</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
                 <!-- Security -->
                 <div>
                     <h3 class="text-sm font-semibold text-orange-500 dark:text-orange-400 mb-2 uppercase tracking-wide">Security</h3>
