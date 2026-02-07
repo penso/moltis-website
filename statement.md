@@ -1,25 +1,25 @@
 # Why I Built Moltis
 
-I built Moltis because I wanted an AI assistant stack I could trust, run myself, and fully understand.
+I built Moltis because I wanted an AI assistant I could trust, run myself, and understand end to end.
 
-I love what [OpenClaw](https://openclaw.ai) is doing. That gateway-first direction is exactly the future I believe in. I also believe AI should feel simple: agents should work for you quietly in the background and help with day-to-day tasks instead of adding more complexity. Moltis is my Rust-native take on that idea: local-first, secure by design, practical in daily use, and focused on useful automation over hype.
+I love what [OpenClaw](https://openclaw.ai) is doing. That assistant-first direction is exactly the future I believe in. I also believe AI should feel simple: your assistant should help with day-to-day work quietly in the background, not add another dashboard to manage. Moltis is my Rust-native take on that idea: local-first, secure by design, practical in daily use, and focused on useful automation over hype.
 
 ## What Moltis Is
 
-Moltis is a personal AI gateway written in Rust.
+Moltis is a personal AI assistant written in Rust.
 
-In practice, it is one binary that runs your assistant runtime: web UI, provider routing, tools, sessions, memory, hooks, and integrations - without a Node runtime or dependency sprawl.
+In practice, it is one binary that runs the full assistant: web UI, provider routing, tools, sessions, memory, hooks, and integrations - without Node runtime overhead or dependency sprawl.
 
 At a high level, Moltis is designed to:
 
-- Connect multiple LLM providers behind one consistent gateway
+- Connect multiple LLM providers through one consistent assistant
 - Keep you in control with full support for local LLMs, so private workflows can stay on your own machine
 - Stream responses in real time
 - Support agent workflows with tools, MCP, and long-term memory
-- Run across channels (web, API, Telegram) while keeping context coherent
+- Work across channels (web, API, Telegram) while keeping context coherent
 - Execute actions safely with sandboxing and approval controls
 
-So instead of chatting with one model in one tab, you run an assistant system you own.
+So instead of chatting with one model in one tab, you get an assistant that can actually help you get things done.
 
 ## Why Rust
 
@@ -60,12 +60,12 @@ I want Moltis to be shaped by real operators and builders - people running assis
 
 ## What This Project Is About
 
-Moltis is about owning your AI runtime.
+Moltis is about owning your AI assistant.
 
 Not outsourcing core control.
 Not treating safety as an afterthought.
 Not locking the future behind a hosted box.
 
-Just a fast, secure, extensible gateway you can run yourself.
+Just a fast, secure, extensible AI assistant you can run yourself.
 
 [Fabien Penso](https://pen.so)
